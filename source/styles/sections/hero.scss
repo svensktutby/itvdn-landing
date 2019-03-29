@@ -1,0 +1,39 @@
+/* hero
+============================== */
+
+.hero {
+  min-height: 590px;
+  padding: 174px 0;
+
+  text-align: center;
+  color: #fff;
+
+  background-color: #7a867f;
+  background-image: url("../images/hero-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__about {
+    font-size: 3rem;
+    line-height: 1;
+    font-family: $ff-main-bold;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 27px;
+
+    font-size: 30px;
+    font-family: $ff-main-light;
+  }
+
+  .button--text-uppercase {
+    padding: 21px 41px;
+
+    font-family: $ff-main-bold;
+    letter-spacing: 1px;
+
+    border-radius: 8px;
+  }
+}
