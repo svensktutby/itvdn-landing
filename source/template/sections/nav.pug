@@ -1,0 +1,10 @@
+-var items = {'Home': 'home', 'About us': 'about-us', 'Our Approch': 'our-approach', 'Our work': 'our-work'}
+
+// //======= navigation =======\\
+nav.nav
+  each val, index in items
+    if index === "Home"
+      a.nav__link.nav__link--active(href= "#" + val)=index
+    else
+      a.nav__link(href= "#" + val)=index
+// \\======= navigation =======//

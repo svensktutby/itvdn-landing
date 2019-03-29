@@ -13,6 +13,20 @@ const gulp = require('gulp'),
       rimraf = require('rimraf'),
       browserSync = require('browser-sync').create();
 
+/* Plumber error message
+ ******************************/
+const plumberLog = function(error) {
+  console.log([
+    '',
+    "----------ERROR MESSAGE START----------",
+    ("[" + error.name + " in " + error.plugin + "]"),
+    error.message,
+    "----------ERROR MESSAGE END----------",
+    ''
+  ].join('\n'));
+  this.end();
+};
+
 /* Server
  ******************************/
 gulp.task('server', function () {
@@ -31,9 +45,10 @@ gulp.task('server', function () {
  ******************************/
 gulp.task('templates:compile', function buildHTML() {
   return gulp.src('./source/template/index.pug')
+    .pipe(plumber())
     .pipe(pug({
       pretty: true
-    }))
+    })).on('error', plumberLog)
     .pipe(gulp.dest('./build'));
 });
 
@@ -49,23 +64,11 @@ gulp.task('styles:compile', function () {
     }))
     .pipe(sass({
       outputStyle: 'compressed' //'expanded'
-    })).on('error', log)
+    })).on('error', plumberLog)
     .pipe(rename('main.min.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build/css'));
 });
-
-const log = function(error) {
-  console.log([
-    '',
-    "----------ERROR MESSAGE START----------",
-    ("[" + error.name + " in " + error.plugin + "]"),
-    error.message,
-    "----------ERROR MESSAGE END----------",
-    ''
-  ].join('\n'));
-  this.end();
-};
 
 /* PNG sprite
 ******************************/

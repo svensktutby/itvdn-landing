@@ -9,6 +9,14 @@
     "type": "git",
     "url": "git+https://github.com/svensktutby/itvdn-landing.git"
   },
+  "homepage": "https://github.com/svensktutby/itvdn-landing#readme",
+  "bugs": {
+    "url": "https://github.com/svensktutby/itvdn-landing/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
@@ -21,11 +29,8 @@
     "gulp.spritesmith": "^6.9.0",
     "rimraf": "^2.6.3"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/svensktutby/itvdn-landing/issues"
-  },
-  "homepage": "https://github.com/svensktutby/itvdn-landing#readme"
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "normalize.scss": "^0.1.0"
+  }
 }

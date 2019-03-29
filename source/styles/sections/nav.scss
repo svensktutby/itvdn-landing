@@ -1,0 +1,45 @@
+/* navigation
+============================== */
+.nav {
+  display: inline-block;
+  margin-right: 15px;
+  padding-top: 7px;
+
+  vertical-align: top;
+
+  &__link {
+    display: inline-block;
+    padding: 10px;
+
+    font-family: $ff-main-bold;
+    vertical-align: top;
+    color: #424242;
+    text-transform: capitalize;
+    text-decoration: none;
+
+    transition: all 0.3s;
+
+    &--active,
+    &:hover {
+      color: #de2b24;
+    }
+
+    &::after {
+      content: "";
+
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-left: 15px;
+
+      vertical-align: middle;
+
+      background-color: #424242;
+      border-radius: 50%;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+}
