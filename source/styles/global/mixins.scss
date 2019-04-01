@@ -96,21 +96,29 @@
   border-radius: $size/2;
 }
 
-/* Centerize flex element
+/* Centering flex element
 ******************************/
-%flex-center {
+@mixin flex-center() {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Centerize absolute element
+/* Centering absolute element
 ******************************/
-%absolute-center {
+@mixin absol-center($horizontal: true, $vertical: true) {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
 }
 
 /* Inline-block

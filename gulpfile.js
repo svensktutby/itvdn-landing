@@ -1,4 +1,4 @@
-/* jshint esnext: true */
+/* global require, jshint node: true, esnext: true */
 
 /* GULP CONFIGURATION
 ============================== */
@@ -18,10 +18,10 @@ const gulp = require('gulp'),
 const plumberLog = function(error) {
   console.log([
     '',
-    "----------ERROR MESSAGE START----------",
-    ("[" + error.name + " in " + error.plugin + "]"),
+    '----------ERROR MESSAGE START----------',
+    ('[' + error.name + ' in ' + error.plugin + ']'),
     error.message,
-    "----------ERROR MESSAGE END----------",
+    '----------ERROR MESSAGE END----------',
     ''
   ].join('\n'));
   this.end();
@@ -76,7 +76,7 @@ gulp.task('pngSprite', function(cb) {
   const spriteData = gulp.src('./source/images/icons/*.png')
     .pipe(spritesmith({
     imgName: 'sprite.png',
-    imgPath: '../imgages/sprite.png',
+    imgPath: '../images/sprite.png',
     cssName: 'sprite.scss',
     padding: 10,
     algorithm: 'top-down'
