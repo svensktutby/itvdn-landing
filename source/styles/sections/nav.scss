@@ -2,15 +2,21 @@
 ============================== */
 .nav {
   display: inline-block;
-  margin-right: 15px;
-  padding-top: 7px;
+  margin-left: 170px;
 
   vertical-align: top;
+
+  @media screen and (max-width: 1030px) {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 25px;
+  }
 
   &__link {
     display: inline-block;
     padding: 10px;
 
+    font-size: 0.9rem;
     font-family: $ff-main-bold;
     vertical-align: top;
     color: #424242;
@@ -40,6 +46,16 @@
 
     &:last-child::after {
       display: none;
+    }
+
+    @media screen and (max-width: 530px) {
+      display: block;
+
+      text-align: center;
+
+      &::after {
+        display: none;
+      }
     }
   }
 }

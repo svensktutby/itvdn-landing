@@ -18,6 +18,7 @@
     font-size: 3rem;
     line-height: 1;
     font-family: $ff-main-bold;
+    text-transform: capitalize;
   }
 
   &__title {
@@ -28,10 +29,16 @@
     font-family: $ff-main-light;
   }
 
+  @media screen and (max-width: 599px ) {
+    min-height: inherit;
+    padding: 100px 20px;
+  }
+
   .button--text-uppercase {
-    padding: 21px 41px;
+    padding: 21px 30px;
 
     font-family: $ff-main-bold;
+    font-size: 1.5rem;
     letter-spacing: 1px;
 
     border-radius: 8px;
