@@ -1,0 +1,23 @@
+- let linkItems = ['facebook-official', 'twitter', 'google-plus', 'linkedin']
+- let linkUrls = ['facebook.com', 'twitter.com', 'google.com', 'linkedin.com']
+
+// //======= page-footer =======\\
+footer.footer
+  .footer__top
+    .container
+      .footer__title Get in touch
+      .socials
+        each item, index in linkItems
+          a.socials__link(href="http://" + linkUrls[index] target="_blank")
+            i(class="socials__icon fa fa-" + item aria-hidden="true")
+              span.socials__text= linkItems[index]
+      .footer__text Subscribe to our newsletter to stay update with what is new
+      form(action="#" method="post")
+        .footer__field
+          input.footer__input(type="email" placeholder="Email Address")
+        button.button(type="submit") Subscribe
+
+  .footer__bottom
+    .footer__copy Cssauthor.com &copy; 2014 All Rights Reserved
+
+// \\======= page-footer =======//
