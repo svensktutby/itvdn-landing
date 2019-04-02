@@ -9,8 +9,10 @@ const gulp = require('gulp'),
       plumber = require('gulp-plumber'),
       autoprefixer = require('gulp-autoprefixer'),
       sourcemaps = require('gulp-sourcemaps'),
+      data = require('gulp-data'),
       spritesmith = require('gulp.spritesmith'),
       rimraf = require('rimraf'),
+      fs = require('fs'),
       browserSync = require('browser-sync').create();
 
 /* Plumber error message
@@ -44,8 +46,14 @@ gulp.task('server', function () {
 /* Pug compile
  ******************************/
 gulp.task('templates:compile', function buildHTML() {
+  const jsonFile = 'titles';
   return gulp.src('./source/template/index.pug')
     .pipe(plumber())
+    .pipe(data(function(file) {
+      return JSON.parse(
+        fs.readFileSync('./source/js/titles.json')
+      );
+    }))
     .pipe(pug({
       pretty: true
     })).on('error', plumberLog)

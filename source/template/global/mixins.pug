@@ -1,0 +1,11 @@
+mixin title-content(section)
+  h2.title__header= section["titleHead"]
+  .title__text= section["titleText"]
+
+mixin title(section, bottom)
+  if bottom
+    .title.title--with-bottom-line
+      +title-content(section)
+  else
+    .title
+      +title-content(section)
