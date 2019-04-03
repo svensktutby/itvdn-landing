@@ -8,6 +8,8 @@ const gulp = require('gulp'),
       rename = require('gulp-rename'),
       plumber = require('gulp-plumber'),
       autoprefixer = require('gulp-autoprefixer'),
+      uglify = require('gulp-uglify'),
+      concat = require('gulp-concat'),
       sourcemaps = require('gulp-sourcemaps'),
       data = require('gulp-data'),
       spritesmith = require('gulp.spritesmith'),
@@ -46,10 +48,9 @@ gulp.task('server', function () {
 /* Pug compile
  ******************************/
 gulp.task('templates:compile', function buildHTML() {
-  const jsonFile = 'titles';
   return gulp.src('./source/template/index.pug')
     .pipe(plumber())
-    .pipe(data(function(file) {
+    .pipe(data(function() {
       return JSON.parse(
         fs.readFileSync('./source/js/titles.json')
       );
@@ -76,6 +77,22 @@ gulp.task('styles:compile', function () {
     .pipe(rename('main.min.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build/css'));
+});
+
+/* Scripts
+******************************/
+gulp.task('scripts', function () {
+  return gulp.src([
+      './source/js/form.js',
+      './source/js/navigation.js',
+      './source/js/main.js'
+    ])
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.min.js'))
+    .pipe(uglify()).on('error', plumberLog)
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/js'));
 });
 
 /* PNG sprite
@@ -124,13 +141,14 @@ gulp.task('copy', gulp.parallel('copy:fonts', 'copy:images'));
 gulp.task('watch', function () {
   gulp.watch('source/template/**/*.pug', gulp.series('templates:compile'));
   gulp.watch('source/styles/**/*.scss', gulp.series('styles:compile'));
+  gulp.watch('source/js/**/*.js', gulp.series('scripts'));
 });
 
 /* Default
 ******************************/
 gulp.task('default', gulp.series(
   'clean',
-  gulp.parallel('templates:compile', 'styles:compile', 'pngSprite', 'copy'),
+  gulp.parallel('templates:compile', 'styles:compile', 'scripts', 'pngSprite', 'copy'),
   gulp.parallel('watch', 'server')
   )
 );
