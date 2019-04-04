@@ -7,10 +7,10 @@ footer.footer
     .container
       .footer__title Get in touch
       .socials
-        each item, index in linkItems
-          a.socials__link(href="http://" + linkUrls[index] target="_blank")
+        each item, key in linkItems
+          a.socials__link(href="http://" + linkUrls[key] target="_blank")
             i(class="socials__icon fa fa-" + item aria-hidden="true")
-              span.socials__text= linkItems[index]
+              span.socials__text= linkItems[key]
       .footer__text Subscribe to our newsletter to stay update with what is new
       form(action="#" method="post")
         .footer__field

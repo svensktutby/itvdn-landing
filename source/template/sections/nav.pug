@@ -1,10 +1,10 @@
--const items = {'Home': 'home', 'About us': 'about-us', 'Our Approach': 'our-approach', 'Our work': 'our-work'}
+-const items = {'home': 'Home', 'about': 'About us', 'approach': 'Our approach', 'work': 'Our work'}
 
 // //======= navigation =======\\
 nav.nav
-  each val, index in items
-    if index === "Home"
-      a.nav__link.nav__link--active(href= "#" + val)= index
+  each item, key in items
+    if key === "home"
+      a.nav__link.nav__link--active(href= "#" + key data-link= key)= item
     else
-      a.nav__link(href= "#" + val)= index
+      a.nav__link(href= "#" + key data-link= key)= item
 // \\======= navigation =======//
